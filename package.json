@@ -1,0 +1,29 @@
+{
+  "name": "laboratorio1flores",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:web": "playwright test",
+    "test:unit": "jest",
+    "test": "npm run test:web && npm run test:unit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "jest": {
+    "testMatch": [
+      "**/*.test.js"
+    ]
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "jest": "^30.4.2"
+  },
+  "dependencies": {
+    "playwright": "^1.62.1",
+    "playwright-core": "^1.62.1"
+  }
+}
+

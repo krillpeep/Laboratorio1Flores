@@ -1,0 +1,53 @@
+$kind: http-request
+name: https://reqres.in/api/users
+description: ""
+url: https://reqres.in/api/users
+method: POST
+headers:
+  x-api-key: free_user_3HPcPi7BsMw75nUPfPmjgfWnfw7
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"Ana Perez\",\r
+
+    \  \"job\": \"QA Engineer\"\r
+
+    }\r\n"
+scripts:
+  - type: afterResponse
+    code: "// Verificamos que el servidor respondió con código 201 (creado con éxito)\r
+
+      pm.test(\"Status code es 201\", function () {\r
+
+      \  pm.response.to.have.status(201);\r
+
+      });\r
+
+      \ \r
+
+      // Verificamos que la respuesta contenga el nombre y el puesto que enviamos\r
+
+      pm.test(\"La respuesta contiene el nombre enviado\", function () {\r
+
+      \  const data = pm.response.json(); // convertimos la respuesta a un objeto\r
+
+      \  pm.expect(data.name).to.eql(\"Ana Perez\");\r
+
+      \  pm.expect(data.job).to.eql(\"QA Engineer\");\r
+
+      });\r
+
+      \ \r
+
+      // Verificamos que el servidor generó automáticamente un id nuevo\r
+
+      pm.test(\"La respuesta incluye un id generado\", function () {\r
+
+      \  const data = pm.response.json();\r
+
+      \  pm.expect(data).to.have.property(\"id\");\r
+
+      });\r\n"
+    language: text/javascript
+order: 1786926790926
